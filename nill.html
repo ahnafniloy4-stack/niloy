@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drawing Helper</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background:#f2f2f2;}
+        .box {
+            background:white;
+            padding:15px;
+            margin-bottom:15px;
+            border-radius:10px;
+        }
+        input { width:100%; padding:8px; margin:5px 0;}
+        button { padding:8px; margin-top:5px; cursor:pointer;}
+    </style>
+</head>
+
+<body>
+
+<h2>📐 Drawing Helper Tool</h2>
+
+<!-- Scale Converter -->
+<div class="box">
+    <h3>📏 Scale Converter</h3>
+    <input type="number" id="realLength" placeholder="Real Length (meter)">
+    <input type="number" id="scale" placeholder="Scale (e.g. 100 for 1:100)">
+    <button onclick="convertScale()">Convert</button>
+    <p id="scaleResult"></p>
+</div>
+
+<!-- Area Calculator -->
+<div class="box">
+    <h3>📐 Area Calculator</h3>
+    <input type="number" id="length" placeholder="Length (m)">
+    <input type="number" id="width" placeholder="Width (m)">
+    <button onclick="calcArea()">Calculate</button>
+    <p id="areaResult"></p>
+</div>
+
+<!-- Unit Converter -->
+<div class="box">
+    <h3>🔢 Unit Converter</h3>
+    <input type="number" id="meter" placeholder="Meter">
+    <button onclick="convertUnit()">Convert to Feet</button>
+    <p id="unitResult"></p>
+</div>
+
+<script>
+function convertScale() {
+    let real = document.getElementById("realLength").value;
+    let scale = document.getElementById("scale").value;
+
+    let drawing = real / scale;
+
+    document.getElementById("scaleResult").innerText =
+        "Drawing Length = " + drawing + " meter";
+}
+
+function calcArea() {
+    let l = document.getElementById("length").value;
+    let w = document.getElementById("width").value;
+
+    let area = l * w;
+
+    document.getElementById("areaResult").innerText =
+        "Area = " + area + " sq meter";
+}
+
+function convertUnit() {
+    let m = document.getElementById("meter").value;
+
+    let ft = m * 3.28084;
+
+    document.getElementById("unitResult").innerText =
+        "Feet = " + ft;
+}
+</script>
+
+</body>
+</html>
